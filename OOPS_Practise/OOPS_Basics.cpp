@@ -605,3 +605,253 @@ int main() {
     return 0;
 }
 // Abstraction: showing only neccessary information or implementation hiding
+
+
+
+// Write a C++ program to implement a class called Circle that has private member variables for radius. Include member functions to calculate the circle's area and circumference.
+#include <iostream>
+using namespace std;
+class Circle{
+    private:
+    float radius;
+    public:
+    void setArea_Circumference(float r){
+        radius=r;
+    }
+    float getArea(){
+        return 3.14*radius*radius;
+    }
+  
+    float getCircumference(){
+        return 2*3.14*radius;
+    }
+    
+};
+int main() {
+   Circle C;
+   C.setArea_Circumference(5.2);
+   cout<<C.getArea()<<endl;
+   cout<<C.getCircumference()<<endl;
+
+    return 0;
+}
+
+// Write a C++ program to implement a class called BankAccount that has private member variables for account number and balance. Include member functions to deposit and withdraw money from the account.
+// Important Question:
+#include <iostream>
+using namespace std;
+class BankAccount{
+    private:
+    string account_number;
+    int balance;
+    public:
+    void setInfo(string AC,int b){
+        account_number=AC;
+        balance=b;
+    }
+    
+    void amountDept(int amount){
+        balance+=amount;
+        cout<<balance<<endl;
+    }
+    void amountWithdrawn(int withdraw_Amt){
+        if(withdraw_Amt<balance){
+             balance-=withdraw_Amt;
+        cout<<balance;
+        }
+        else{
+            cout<<"insufficient amount";
+        }
+       
+    }
+};
+int main() {
+   BankAccount B;
+   B.setInfo("abc",2000);
+B.amountDept(1000);
+   B.amountWithdrawn(800);
+
+    return 0;
+}
+//  Write a C++ program to implement a class called Employee that has private member variables for name, employee ID, and salary. Include member functions to calculate and set salary based on employee performance.
+#include <iostream>
+using namespace std;
+class Employee{
+    private:
+    string name;
+    int Emp_id;
+    float salary;
+    public:
+    void setName(string n){
+        name=n;
+    }
+    void setEmpId(int e){
+        Emp_id=e;
+    }
+    void setSalary(float s){
+        salary=s;
+    }
+    void Rating(float rating){
+        if(rating>=0.0 && rating<=1.4){
+            salary=salary*rating;
+            
+        }
+        else{
+            cout<<"salary remains the same";
+        }
+    }
+    string getName(){
+        return name;
+    }
+    int getEmpId(){
+        return Emp_id;
+    }
+    float getSalary(){
+        return salary;
+    }
+};
+int main()
+{
+  Employee E;
+  E.setName("jiya");
+  E.setEmpId(12);
+  E.setSalary(100000);
+  E.Rating(1.2);
+   cout<<E.getName()<<endl;
+   cout<<E.getEmpId()<<endl;
+   cout<<E.getSalary()<<endl;
+
+    return 0;
+}
+// . Write a C++ program to implement a class called Date that has private member variables for day, month, and year. Include member functions to set and get these variables, as well as to validate if the date is valid.
+
+#include <iostream>
+using namespace std;
+class Date{
+private:
+int day;
+int month;
+int year;
+public:
+void setDay(int d){
+    day=d;
+}
+void setMonth(int m){
+    month=m;
+}
+void setYear(int y){
+    year=y;
+}
+int getDay(){
+    return day;
+}
+int getMonth(){
+    return month;
+}
+int getYear(){
+    return year;
+}
+bool isValid(){
+    if(month<1 || month>12){
+        return false;
+    }
+    if(day<1 || day>31){
+        return false;
+    }
+    if((month==4 || month==6 || month==9 || month==11) && day>30){
+        return false;
+    }
+    if(month==2){
+        if((year%4==0 && year%100!=0) || year%400==0){
+            if(day>29){
+                return false;
+            }
+        }
+        else{
+            if(day>28){
+                return false;
+            }
+        }
+    }
+    return true;
+}
+
+};
+int main(){
+    Date D;
+    int day;
+    int month;
+    int year;
+    cin>>day;
+    cin>>month;
+    cin>>year;
+    D.setDay(day);
+    D.setMonth(month);
+    D.setYear(year);
+    if(D.isValid()){
+        cout<<"true"<<endl;
+    }
+    else{
+        cout<<"false"<<endl;
+    }
+    cout<<D.getDay()<<endl;
+    cout<<D.getMonth()<<endl;
+    cout<<D.getYear()<<endl;
+    return 0;
+}
+
+// Write a C++ program to implement a class called Student that has private member variables for name, class, roll number, and marks. Include member functions to calculate the grade based on the marks and display the student's information.
+#include <iostream>
+using namespace std;
+class Student{
+    private:
+  string name;
+  int id;
+  int marks;
+  public:
+  void setInfo(string n,int i,int m){
+      name=n;
+      id=i;
+      marks=m;
+      
+  }
+  string getName(){
+      return name;
+  }
+  int getId(){
+      return id;
+  }
+  int getMarks(){
+      return marks;
+  }
+  string Grade(){
+      if(marks>90){
+          return "A+";
+      }
+      else if(marks>80){
+          return "A";
+      }
+      else if(marks>70){
+          return "B";
+      }
+      else if(marks>60){
+          return "C";
+      }
+     
+      else{
+          return "D";
+      }
+  }
+  
+};
+int main() {
+ Student S;
+ string name;
+ int id;
+ int marks;
+ cin>>name>>id>>marks;
+ S.setInfo(name,id,marks);
+ cout<<S.getName()<<" "<<S.getId()<<" "<<S.getMarks()<<" "<<S.Grade()<<endl;
+
+    return 0;
+}
